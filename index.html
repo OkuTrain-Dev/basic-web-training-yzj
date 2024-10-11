@@ -24,7 +24,7 @@
         }
 
         .card {
-            width: 60%;
+            width: 40%;
             height: 40vh;
             border: 1px solid white;
             background-color: rgba(255, 255, 255, 0.3);
@@ -35,24 +35,41 @@
             font-size: 10px;
             color: white;
             align-items: center;
+            margin:0 auto;
         }
         .card h1 {
-            font-size: 50px;
+            font-size: 30px;
             margin: 0;
+
+        }
+        .card p{
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(1px);
+            border-radius: 1rem;
         }
 
         .red-text{
-            color: red;
+            color: black;
         }
     </style>
 </head>
 <body>
 <div>
     <img alt="background" src="css/微信图片_20221002144011.jpg" class="fullscreen-img">
-
-    <div class="card">
+    <div class="card ">
         <h1 class="red-text">计数器</h1>
+        <button  id="incrementButton">Count+1</button >
+        <h2 class="red-text">Number:</h2>
     </div>
+    <script>
+        const counterElement = document.getElementById('counter');
+        const incrementButton = document.getElementById('incrementButton');
+        let count=0
+        incrementButton.addEventListener('click', () => {
+            count++;
+            counterElement.textContent = count;});
+    </script>
 
 </div>
 </body>
