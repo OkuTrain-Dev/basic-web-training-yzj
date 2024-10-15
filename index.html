@@ -6,15 +6,7 @@
     <style>
         body {
             margin: 0;
-            /*padding: 0;*/
-            /*height: 100%;*/
-            /*width: 100%;*/
-            /*display: flex;*/
-            /*justify-content: center;*/
-            /*align-items: center;*/
         }
-
-
         .fullscreen-img {
             position: fixed;
             z-index: -9999;
@@ -22,55 +14,95 @@
             height: 100vh;
             object-fit: cover;
         }
-
         .card {
-            width: 40%;
-            height: 40vh;
+            width: 60%;
+            height: 70vh;
+            padding:1rem;
             border: 1px solid white;
             background-color: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(1px);
             border-radius: 1rem;
             display: flex;
+            flex-direction:column;
             justify-content: center;
-            font-size: 10px;
-            color: white;
-            align-items: center;
             margin:0 auto;
+            position: relative;
+            box-sizing:border-box;
+        }
+        .container{
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            height:100vh;
         }
         .card h1 {
-            font-size: 30px;
-            margin: 0;
-
+            font-size: 2.5rem;
         }
         .card p{
             font-size: 16px;
             background-color: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(1px);
             border-radius: 1rem;
+            padding: 0.5rem;
+            margin: 0;
         }
-
+        .button {
+            border-radius: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 5px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            width: 10%;
+        }
+        .element-to-move {
+            position: absolute;  /* 绝对定位 */
+            bottom: 25rem;  /* 距离底部0 */
+            left: 0;  /* 距离左边0 */
+            padding: 10px;
+            border-radius: 20px;
+        }
+        .element-to-hove {
+            position: absolute;
+            bottom: 23rem;
+            left: 0;
+            padding: 10px;
+        }
         .red-text{
             color: black;
+            font-size: 40px;
+            font-weight:bold;
+        }
+        .card-new{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 20px;
+        }
+        #CounterText{
+            margin-top: 1rem;
+            font-size:1rem;
         }
     </style>
 </head>
 <body>
 <div>
     <img alt="background" src="css/微信图片_20221002144011.jpg" class="fullscreen-img">
-    <div class="card ">
-        <h1 class="red-text">计数器</h1>
-        <button  id="incrementButton">Count+1</button >
-        <h2 class="red-text">Number:</h2>
+    <div class="card card-new">
+       <div class="red-text container">计数器</div>
+        <div class="container"></div>
+        <button class="my-2 button element-to-move" id="CounterButton">Count+1</button>
+        <div id="CounterText" class="element-to-hove">Number: 0</div>
     </div>
-    <script>
-        const counterElement = document.getElementById('counter');
-        const incrementButton = document.getElementById('incrementButton');
-        let count=0
-        incrementButton.addEventListener('click', () => {
-            count++;
-            counterElement.textContent = count;});
-    </script>
-
 </div>
+<script>
+    let Count = 0
+    const CounterButton = document.getElementById('CounterButton');
+    const CounterText = document.getElementById('CounterText');
+    CounterButton.onclick = () => {
+        Count += 1
+        CounterText.innerText = `Number: ${Count}`
+    }
+</script>
 </body>
 
